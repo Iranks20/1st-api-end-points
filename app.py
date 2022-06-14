@@ -79,21 +79,20 @@ def student():
         conn.close()
         return respone  
 
-@c_app.route('/student/')
-def student_details(student_id):
-    try:
-        conn = mysql.connect()
-        cursor = conn.cursor(pymysql.cursors.DictCursor)
-        cursor.execute("SELECT id, name, email, address FROM student WHERE id =%s", student_id)
-        studentRow = cursor.fetchone()
-        respone = jsonify(studentRow)
-        respone.status_code = 200
-        return respone
-    except Exception as e:
-        print(e)
-    finally:
-        cursor.close() 
-        conn.close() 
+#@c_app.route('/student/')
+#def student_details(student_id):
+    #try:
+        #conn = mysql.connect()
+        #cursor = conn.cursor(pymysql.cursors.DictCursor)
+        #cursor.execute("SELECT id, name, email, address FROM student WHERE id =%s", student_id)
+        #studentRow = cursor.fetchone()
+        #respone.status_code = 200
+        #return respone
+    #except Exception as e:
+        #print(e)
+    #finally:
+        #cursor.close() 
+        #conn.close() 
 
 @c_app.route('/update', methods=['PUT'])
 def update_student():
